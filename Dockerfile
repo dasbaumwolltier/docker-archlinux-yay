@@ -16,7 +16,8 @@ RUN cd /build &&\
 FROM archlinux
 
 RUN useradd -m yay &&\
-    echo "yay ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    echo "yay ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers &&\
+    echo "DenyUsers yay" >> /etc/ssh/sshd_config
 
 COPY --from=build /build/yay/yay.pkg.tar /
 
