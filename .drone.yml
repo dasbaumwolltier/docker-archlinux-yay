@@ -1,15 +1,5 @@
-# yaml-language-server: $schema=https://json.schemastore.org/drone.json
-kind: pipeline
-type: kubernetes
-name: build-and-publish
-
-steps:
-  - name: docker
-    image: plugins/docker
-    settings:
-      repo: dasbaumwolltier/archlinux-yay
-      tags: latest
-      username:
-        from_secret: docker_hub_username
-      password:
-        from_secret: docker_hub_password
+kind: template
+load: dockerhub.yaml
+data:
+  org: dasbaumwolltier
+  image: archlinux-yay
